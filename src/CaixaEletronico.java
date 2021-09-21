@@ -23,7 +23,7 @@ public class CaixaEletronico {
         }
     }
 
-    public void efetuarSaque(double valor) {
+    public void efetuarSaque(double valor) throws Exception {
         if(this.conta == null) {
             System.out.println("Faça primeiro sua autenticação!");
         } else {

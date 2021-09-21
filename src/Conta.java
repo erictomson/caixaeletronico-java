@@ -39,7 +39,14 @@ public abstract class Conta {
         this.titular = titular;
     }
 
-    public void sacar(double valor) {
+    public void sacar(double valor) throws Exception,NumberFormatException {
+        System.out.println("Tentativa de saque na conta " + this.numero + " no valor de: " + valor);
+        if(valor <= 0) {
+            throw new NumberFormatException("Valor para saque inválido");
+        }
+        if (saldo < valor) {
+            throw new SaldoInsuficienteException("");
+        }
         this.saldo -= valor;
     }
 
@@ -47,7 +54,7 @@ public abstract class Conta {
         this.saldo += valor;
     }
 
-    public void transferir(double valor, Conta destino) {
+    public void transferir(double valor, Conta destino) throws Exception {
         this.sacar(valor);
         destino.depositar(valor);
     }
