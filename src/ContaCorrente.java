@@ -4,4 +4,8 @@ public class ContaCorrente extends Conta {
         super(titular);
     }
 
+    public ContaCorrente(Cliente titular, String numeroConta) {
+        super(titular);
+    }
+
 }

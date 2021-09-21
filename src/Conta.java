@@ -9,6 +9,12 @@ public abstract class Conta {
         this.titular=titular;
     }
 
+    public Conta(Cliente titular, String conta) {
+        this.saldo=0;
+        this.numero="1";
+        this.titular=titular;
+    }
+
     public String getNumero() {
         return numero;
     }
@@ -48,6 +54,19 @@ public abstract class Conta {
 
     public double consultarSaldo() {
         return this.saldo;
+    }
+
+    @Override
+    public boolean equals(Object objeto) {
+        // Verifica se o objeto é do mesmo tipo da classe Conta
+        if(this == objeto) { // mesmo que super.equals(objeto)
+            return true;
+        } if((objeto instanceof Conta) && (objeto != null)) { // Verifica se o objeto é uma Conta e se está inicializado
+            Conta conta = (Conta) objeto;
+            return this.numero.equals((conta.numero));
+        } else {
+            return false;
+        }
     }
 
 }
